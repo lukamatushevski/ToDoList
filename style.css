@@ -1,0 +1,175 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, #ff9966, #ff5e62);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Decorative background shapes */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 1;
+}
+
+body::before {
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    left: -150px;
+}
+
+body::after {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    right: -100px;
+}
+
+/* Main container styling */
+.container {
+    background: rgba(255, 255, 255, 0.85); /* Slightly transparent for a soft look */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Keeps the container on top of the background */
+    animation: fadeInContainer 0.8s ease;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title styling */
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Input area styling */
+.input-area {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #f7f9fc;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#todoInput {
+    flex-grow: 1;
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #555;
+    background-color: transparent;
+}
+
+#todoInput::placeholder {
+    color: #aaa;
+}
+
+#addBtn {
+    background-color: #ff5e62;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addBtn:hover {
+    background-color: #ff9966;
+}
+
+/* To-do list styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.3s;
+    animation: fadeInTask 0.5s ease forwards;
+}
+
+@keyframes fadeInTask {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li:hover {
+    transform: scale(1.02);
+    background-color: #f1f5f9;
+}
+
+li.completed {
+    background-color: #d1f0da;
+    text-decoration: line-through;
+    color: #6c757d;
+    font-style: italic;
+}
+
+button.deleteBtn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.deleteBtn:hover {
+    background-color: #e63946;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+}
